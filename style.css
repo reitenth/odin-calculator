@@ -1,0 +1,94 @@
+body {
+    background-color: #2e3440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.container {
+    background-color: #D8DEE9;
+    border: black solid 2px;
+    border-radius: 10px;
+    height: 55vh;
+    width: 40vh;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    flex-direction: column;
+    margin-top: 100px;
+
+}
+
+.displayrow {
+    display: flex;
+    flex-direction: column;
+    background-color: #ECEFF4;
+    border: black solid 2px;
+    border-radius: 5px;
+    width: 35vh;
+    height: 12vh;
+    margin-top: 25px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.toprow, .bottomrow {
+    text-align: end;
+    margin-right: 20px;
+}
+
+.toprow {
+    font-size: medium;
+}
+
+.bottomrow {
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.clearrow {
+    display: flex;
+    gap: 10px;
+    width: 35vh;
+    margin-top: 20px;
+
+}
+
+.clearbutton, .deletebutton {
+    background-color: lightcoral;
+    text-align: center;
+    border: black solid 2px;
+    border-radius: 5px;
+    padding:  15px 20px 15px 20px;
+    flex-grow: 1;
+}
+
+.deletebutton {
+    background-color: lightskyblue;
+}
+
+.numrow1, .numrow2, .numrow3, .numrow4 {
+    display: flex;
+    gap: 10px;
+    width: 35vh;
+}
+
+
+.num0, .num1, .num2, .num3, .num4, .num5, .num6, .num7, .num8, .num9, .numdivide, .numtimes, .numsubtract, .numplus, .numperiod, .numequals {
+    background-color: #ECEFF4;
+    padding: 20px;
+    flex-grow: 1;
+    text-align: center;
+    border: black solid 2px;
+    border-radius: 5px;
+}
+
+.numbercontainer {
+    display: flex;
+    gap: 10px;
+    width: 35vh;
+    margin-top: 10px;
+    flex-direction: column;
+
+}
