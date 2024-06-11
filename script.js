@@ -1,18 +1,32 @@
+// html dom
+
 const clearButton = document.querySelector("#clear");
 const deleteButton = document.querySelector("#delete");
-const numberButton = document.querySelector(".number");
-const operatorButton = document.querySelector(".operator");
+const numberButton = document.querySelectorAll(".number");
+const operatorButton = document.querySelectorAll(".operator");
 const currentNumber = document.querySelector(".bottomrow");
 const previousNumber = document.querySelector(".toprow");
 
-numberButton.addEventListener("click", function (e) {
-  numberButton(e.target.textContent);
-});
+// number click to display
 
-console.log(numberButton);
+numberButton.forEach((numberClick) =>
+  numberClick.addEventListener("click", () => {
+    appendNumber(numberClick.textContent);
+  })
+);
 
-function operate() {
-  sum = 2 + 3;
+function appendNumber(number) {
+  currentNumber.textContent = number;
 }
 
-console.log(operate);
+// operator click to display
+
+operatorButton.forEach((operatorClick) =>
+  operatorClick.addEventListener("click", () => {
+    setOperation(operatorClick.textContent);
+  })
+);
+
+function setOperation(operator) {
+  currentNumber.textContent = operator;
+}
