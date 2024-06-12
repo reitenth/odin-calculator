@@ -2,49 +2,48 @@ let operator = "";
 let previousValue = "";
 let currentValue = "";
 
-// html dom
-
 const clearButton = document.querySelector("#clear");
 const deleteButton = document.querySelector("#delete");
 const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
-const currentNumber = document.querySelector(".bottomrow");
-const previousNumber = document.querySelector(".toprow");
-
-// number click to bottom display (current number)
+const currentScreen = document.querySelector(".bottomrow");
+const previousScreen = document.querySelector(".toprow");
 
 numberButton.forEach((numberClick) =>
-  numberClick.addEventListener("click", () => {
-    appendNumber(numberClick.textContent);
-    currentNumber.textContent = currentValue;
+  numberClick.addEventListener("click", function (e) {
+    handleNumber(e.target.textContent);
+    currentScreen.textContent = currentValue;
   })
 );
-
-// operator click to bottom display (current number)
 
 operatorButton.forEach((operatorClick) =>
-  operatorClick.addEventListener("click", () => {
-    setOperation(operatorClick.textContent);
-    previousNumber.textContent = previousValue + "" + operator;
-    currentNumber.textContent = currentValue;
+  operatorClick.addEventListener("click", function (e) {
+    handleOperator(e.target.textContent);
+    previousScreen.textContent = previousValue + " " + operator;
+    currentScreen.textContent = currentValue;
   })
 );
 
-function appendNumber(number) {
+function handleNumber(number) {
   if (currentValue.length <= 5) {
     currentValue += number;
   }
 }
 
-function setOperation(operator) {
-  currentNumber.textContent = operator;
+function handleOperator(operator) {
+  currentScreen.textContent = operator;
   previousValue = currentValue;
+  currentValue = "";
 }
 
 clearButton.addEventListener("click", () => {
-  let operator = "";
-  let previousValue = "";
-  let currentValue = "";
-  previousNumber.textContent = currentValue;
-  currentNumber.textContent = currentValue;
+  operator = "";
+  previousValue = "";
+  currentValue = "";
+  previousScreen.textContent = currentValue;
+  currentScreen.textContent = currentValue;
+});
+
+deleteButton.addEventListener("click", function deleteNumber() {
+  currentScreen.textContent = currentScreen.textContent.slice(0, -1);
 });
