@@ -93,11 +93,10 @@ button:hover {
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
-  margin-top: 25px;
+  margin-top: 20px;
+  width: 40vh;
+  text-align: center;
 }
 
 .footer > a {
