@@ -1,6 +1,10 @@
+// default values
+
 let operator = "";
 let previousValue = "";
 let currentValue = "";
+
+// html dom into javascript
 
 const clearButton = document.querySelector("#clear");
 const deleteButton = document.querySelector("#delete");
@@ -10,12 +14,16 @@ const currentScreen = document.querySelector(".bottomrow");
 const previousScreen = document.querySelector(".toprow");
 const equalNumber = document.querySelector(".equal");
 
+// display number when one is clicked to current screen
+
 numberButton.forEach((numberClick) =>
   numberClick.addEventListener("click", function (e) {
     handleNumber(e.target.textContent);
     currentScreen.textContent = currentValue;
   })
 );
+
+// display operator to previous screen along with previous value
 
 operatorButton.forEach((operatorClick) =>
   operatorClick.addEventListener("click", function (e) {
@@ -25,17 +33,23 @@ operatorButton.forEach((operatorClick) =>
   })
 );
 
+// number function, if current value is <=5 add a number digit
+
 function handleNumber(number) {
   if (currentValue.length <= 5) {
     currentValue += number;
   }
 }
 
+// operator function
+
 function handleOperator(operatorClick) {
   operator = operatorClick;
   previousValue = currentValue;
   currentValue = "";
 }
+
+// clear button, makes operator and values blank followed by the screens blank
 
 clearButton.addEventListener("click", () => {
   operator = "";
@@ -45,10 +59,14 @@ clearButton.addEventListener("click", () => {
   currentScreen.textContent = currentValue;
 });
 
+// delete button, removes one digit from current screen and stores it as current value
+
 deleteButton.addEventListener("click", function deleteNumber() {
   currentScreen.textContent = currentScreen.textContent.slice(0, -1);
   currentValue = currentScreen.textContent;
 });
+
+// equal button, doesn't do anything if current value and previous screen are blank. runs operate and round number functions
 
 equalNumber.addEventListener("click", function () {
   if (currentValue != "" && previousScreen != "") {
@@ -58,6 +76,8 @@ equalNumber.addEventListener("click", function () {
       previousValue + " " + operator + " " + currentValue;
   }
 });
+
+// operate function, changes values from strings to numbers, then +-x/ previous value by current value
 
 function operate() {
   previousValue = Number(previousValue);
@@ -74,6 +94,8 @@ function operate() {
   }
   currentScreen.textContent = roundNumber(previousValue);
 }
+
+// rounds previous value to 3 decimal places
 
 function roundNumber(previousValue) {
   return Math.round(previousValue * 1000) / 1000;
