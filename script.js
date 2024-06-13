@@ -70,10 +70,10 @@ deleteButton.addEventListener("click", function deleteNumber() {
 
 equalNumber.addEventListener("click", function () {
   if (currentValue != "" && previousScreen != "") {
+    previousScreen.textContent =
+      previousValue + " " + operator + " " + currentValue + " " + "=";
     operate();
     roundNumber();
-    previousScreen.textContent =
-      previousValue + " " + operator + " " + currentValue;
   }
 });
 
