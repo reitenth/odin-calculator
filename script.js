@@ -30,8 +30,8 @@ function handleNumber(number) {
   }
 }
 
-function handleOperator(operator) {
-  currentScreen.textContent = operator;
+function handleOperator(operatorClick) {
+  operator = operatorClick;
   previousValue = currentValue;
   currentValue = "";
 }
@@ -46,4 +46,22 @@ clearButton.addEventListener("click", () => {
 
 deleteButton.addEventListener("click", function deleteNumber() {
   currentScreen.textContent = currentScreen.textContent.slice(0, -1);
+  currentValue = currentScreen.textContent;
+  console.log(currentValue);
 });
+
+function operate() {
+  previousValue = Number(previousValue);
+  currentValue = Number(currentValue);
+
+  if (operator === "+") {
+    previousValue += currentValue;
+  } else if (operator === "-") {
+    previousValue -= currentValue;
+  } else if (operator === "x") {
+    previousValue *= currentValue;
+  } else {
+    previousValue /= currentValue;
+  }
+  console.log(previousValue);
+}
