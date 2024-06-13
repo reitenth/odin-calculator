@@ -8,6 +8,7 @@ const numberButton = document.querySelectorAll(".number");
 const operatorButton = document.querySelectorAll(".operator");
 const currentScreen = document.querySelector(".bottomrow");
 const previousScreen = document.querySelector(".toprow");
+const equalNumber = document.querySelector(".equal");
 
 numberButton.forEach((numberClick) =>
   numberClick.addEventListener("click", function (e) {
@@ -47,7 +48,15 @@ clearButton.addEventListener("click", () => {
 deleteButton.addEventListener("click", function deleteNumber() {
   currentScreen.textContent = currentScreen.textContent.slice(0, -1);
   currentValue = currentScreen.textContent;
-  console.log(currentValue);
+});
+
+equalNumber.addEventListener("click", function () {
+  if (currentValue != "" && previousScreen != "") {
+    operate();
+    roundNumber();
+    previousScreen.textContent =
+      previousValue + " " + operator + " " + currentValue;
+  }
 });
 
 function operate() {
@@ -63,5 +72,9 @@ function operate() {
   } else {
     previousValue /= currentValue;
   }
-  console.log(previousValue);
+  currentScreen.textContent = roundNumber(previousValue);
+}
+
+function roundNumber(previousValue) {
+  return Math.round(previousValue * 1000) / 1000;
 }
